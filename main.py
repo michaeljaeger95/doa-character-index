@@ -1,5 +1,6 @@
 import urllib.request
 import pandas as pd
+from tabulate import tabulate
 from bs4 import BeautifulSoup
 
 
@@ -29,5 +30,5 @@ def double(l):
 with open("list.txt") as f:
 	names = f.readlines()  # [:5]
 	names = [x.strip() for x in names]
-	print(single(names))
-	print(double(names))
+	print(tabulate(single(names).to_frame(), tablefmt="markdown"))
+	print(tabulate(double(names), tablefmt="markdown"))
